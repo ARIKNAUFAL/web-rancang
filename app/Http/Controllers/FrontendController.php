@@ -43,7 +43,12 @@ class FrontendController extends Controller
             $data['student_profile'] = ProfileStudent::where('student_id', Session::get('student_id'))->first();
         }
 
-        return view('frontend.index', $data);
+        $view = view('frontend.index', $data);
+        if (!Session::get('student_log')) {
+            return response($view)->header('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=600');
+        }
+
+        return $view;
     }
 
     public function category(Category $category)
@@ -68,7 +73,12 @@ class FrontendController extends Controller
             $data['student_profile'] = ProfileStudent::where('student_id', Session::get('student_id'))->first();
         }
 
-        return view('frontend.index', $data);
+        $view = view('frontend.index', $data);
+        if (!Session::get('student_log')) {
+            return response($view)->header('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=600');
+        }
+
+        return $view;
     }
 
     public function lesson(Lesson $lesson)
