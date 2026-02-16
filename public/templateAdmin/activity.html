@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Guidance | Activity</title>
+    <link rel="icon" href="dist/image/favicon.png">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="bower_components/datatables/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="bower_components/datatables/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="bower_components/datatables/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Header -->
+        <header class="main-header">
+            <a href="index2.html" class="logo" style="background-color: #484c5c;">
+                <span class="logo-mini"><b>J</b>WD</span>
+                <span class="logo-lg"><b>Guidance</b>Admin</span>
+            </a>
+            <nav class="navbar navbar-static-top" style="background-color: #6044a4;">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown tasks-menu">
+                            <a href="#">
+                                <i class="fa fa-gear (alias)"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="dist/image/avatar.png" class="user-image" alt="User Image">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header" style="background-color: #484c5c;">
+                                    <img src="dist/image/avatar.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        Renaldi Noviandi - Admin
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">My Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="login-admin.html" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Tutup Header -->
+
+        <!-- sidebar -->
+        <aside class="main-sidebar" style="background-color: #6044a4;">
+            <section class="sidebar" style="background-color: #6044a4;">
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header" style="background-color: #6044a4; color: white;">Utama</li>
+                    <li><a href="index.html"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+                    <li class="header" style="background-color: #6044a4; color: white;">Data Master</li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>Website</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="user.html"><i class="fa fa-circle-o"></i> User</a></li>
+                            <li><a href="lesson.html"><i class="fa fa-circle-o"></i> Lesson</a></li>
+                            <li class="active"><a href="activity.html"><i class="fa fa-circle-o"></i> Activity</a></li>
+                            <li><a href="request.html"><i class="fa fa-circle-o"></i> Request</a></li>
+                            <li><a href="category.html"><i class="fa fa-circle-o"></i> Category</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- Breadcrumb -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    Website / Activity
+                    <small></small>
+                </h1>
+            </section>
+
+            <!-- Content -->
+            <section class="content">
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">Data For Table Activity</h3>
+                            </div>
+                            <div class="box-body">
+                                <table id="example2" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 20px;">No</th>
+                                            <th>Fullname</th>
+                                            <th>Phone Number</th>
+                                            <th>Email</th>
+                                            <th>Activity</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Renaldi Noviandi</td>
+                                            <td>089848488263</td>
+                                            <td>renaldinoviandi10@gmail.com</td>
+                                            <td>Tambah</td>
+                                            <td>03/01/2023</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Renaldi Noviandi</td>
+                                            <td>089848488263</td>
+                                            <td>renaldinoviandi10@gmail.com</td>
+                                            <td>Edit</td>
+                                            <td>03/01/2023</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2023 <a href="#">Jagowebdev</a>.</strong> All rights
+            reserved.
+        </footer>
+
+        <div class="control-sidebar-bg"></div>
+
+    </div>
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
+    <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="dist/js/pages/dashboard2.js"></script>
+    <script src="dist/js/demo.js"></script>
+    <!-- Datatbles -->
+    <script src="bower_components/datatables/datatables/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="bower_components/datatables/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="bower_components/datatables/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="bower_components/datatables/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="bower_components/datatables/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="bower_components/datatables/jszip/jszip.min.js"></script>
+    <script src="bower_components/datatables/pdfmake/pdfmake.min.js"></script>
+    <script src="bower_components/datatables/pdfmake/vfs_fonts.js"></script>
+    <script src="bower_components/datatables/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="bower_components/datatables/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="bower_components/datatables/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+
+</html>

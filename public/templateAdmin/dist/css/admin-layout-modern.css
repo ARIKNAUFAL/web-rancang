@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #efeff4;
+    --panel: #f9fafb;
+    --panel-border: #e6eaee;
+    --text: #193d33;
+    --muted: #8a9a95;
+    --active-bg: #dbefe7;
+    --active-text: #0d6c48;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: var(--bg);
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+}
+
+.admin-shell {
+    max-width: 1432px;
+    margin: 0 auto;
+    padding: 34px 36px;
+    display: grid;
+    grid-template-columns: 92px 254px 1fr;
+    gap: 18px;
+}
+
+.admin-rail,
+.admin-side,
+.admin-main {
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+.admin-rail {
+    min-height: calc(100vh - 68px);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-side {
+    min-height: calc(100vh - 68px);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-main {
+    min-height: calc(100vh - 68px);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rail-logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: #f0f7f2;
+    color: #0f6f46;
+    font-size: 23px;
+    display: grid;
+    place-items: center;
+}
+
+.rail-spacer {
+    font-size: 11px;
+    color: #9ba9a3;
+    margin: 8px 0 4px;
+}
+
+.rail-btn {
+    width: 100%;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #6b8379;
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+}
+
+.rail-btn.active {
+    background: var(--active-bg);
+    color: #0f7b54;
+}
+
+.rail-footer {
+    margin-top: auto;
+    width: 100%;
+    display: grid;
+    gap: 8px;
+}
+
+.rail-footer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 auto;
+    object-fit: cover;
+    border: 1px solid #dce3df;
+}
+
+.side-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #064f35;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.side-brand .fa {
+    font-size: 24px;
+}
+
+.side-label {
+    margin: 16px 10px 10px;
+    color: #8f9d99;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .02em;
+}
+
+.side-link {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: #60776e;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.side-link i {
+    width: 18px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.side-link.active {
+    background: var(--active-bg);
+    color: var(--active-text);
+    font-weight: 600;
+}
+
+.side-bottom {
+    margin-top: auto;
+    border-top: 1px solid #edf0f2;
+    padding-top: 14px;
+}
+
+.side-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px 10px;
+}
+
+.side-profile img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.side-profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #27453a;
+    line-height: 1.2;
+}
+
+.side-profile-role {
+    font-size: 12px;
+    color: #91a09a;
+}
+
+.side-logout {
+    width: 100%;
+    height: 38px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #5f746b;
+    font-size: 14px;
+    text-align: left;
+    padding: 0 12px;
+}
+
+.rail-btn:focus-visible,
+.side-link:focus-visible,
+.side-logout:focus-visible,
+.admin-content .btn:focus-visible,
+.admin-content a:focus-visible,
+.admin-content input:focus-visible,
+.admin-content select:focus-visible,
+.admin-content textarea:focus-visible,
+.admin-content button:focus-visible {
+    outline: 3px solid #1f9f74;
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+.admin-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.admin-title {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: #093d2d;
+}
+
+.admin-sub {
+    color: #98a39f;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-content {
+    flex: 1;
+    min-height: 0;
+}
+
+.admin-content .content {
+    padding: 0 !important;
+}
+
+.admin-content .row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.admin-content .row>[class*="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.admin-content .box {
+    border: 1px solid #e5e9ec;
+    border-radius: 12px;
+    box-shadow: none;
+    margin-bottom: 16px;
+    background: #fff;
+}
+
+.admin-content .box-header {
+    border-bottom: 1px solid #f0f3f4;
+    padding: 14px 16px 10px;
+}
+
+.admin-content .box-header .box-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #123d30;
+}
+
+.admin-content .box-body {
+    padding: 14px 16px;
+}
+
+.admin-content .table {
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.admin-content .table>thead>tr>th {
+    color: #587067;
+    font-weight: 600;
+    border-bottom: 1px solid #e8edef;
+}
+
+.admin-content .table>tbody>tr>td {
+    vertical-align: middle;
+    border-top: 1px solid #eef2f4;
+}
+
+.admin-content .btn {
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 10px;
+}
+
+.admin-content .badge {
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.admin-content .alert {
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+@media (max-width: 1280px) {
+    .admin-shell {
+        grid-template-columns: 78px 222px 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    .admin-shell {
+        padding: 14px;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-rail,
+    .admin-side {
+        min-height: 0;
+    }
+
+    .admin-rail {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .rail-spacer,
+    .rail-footer {
+        display: none;
+    }
+
+    .admin-main {
+        min-height: 0;
+        padding: 14px;
+    }
+
+    .admin-title {
+        font-size: 28px;
+    }
+}

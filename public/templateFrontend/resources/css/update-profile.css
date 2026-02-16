@@ -1,0 +1,188 @@
+/* ----------------------------------------------- */
+/** || Reusable Styles */
+/* ----------------------------------------------- */
+/** || Universal */
+* {
+    box-sizing: border-box;
+    color: var(--clr-font);
+    font-family: var(--ff-general) !important;
+    text-decoration: none;
+}
+
+/** || Body */
+body {
+    background-color: var(--clr-primary);
+}
+
+/** || header, section, footer */
+header,
+section {
+    margin: 0 5.660%;
+}
+
+/** || headings' style */
+h1 {
+    font-size: var(--fs-small-20);
+    font-weight: var(--fw-bold);
+}
+
+h2 {
+    font-size: var(--fs-small-16);
+    font-weight: var(--fw-bold);
+}
+
+/** || header */
+header {
+    margin-top: 22px;
+    margin-bottom: 20px;
+}
+
+/** || update-profile Section */
+.stand-out {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.stand-out>img {
+    width: 46px;
+    clip-path: circle();
+}
+
+.stand-out>h2 {
+    margin-left: 15px;
+}
+
+form>div {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: var(--fs-small-14);
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: transparent;
+    outline: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 1px solid var(--clr-border);
+    padding: 5px;
+}
+
+.gender-field {
+    display: flex;
+    flex-direction: row;
+}
+
+.gender-field>div:first-child {
+    margin-right: 15px;
+}
+
+.gender-field>* {
+    border: 1px solid var(--clr-border);
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.radio-group>label,
+.radio-group>input {
+    margin: 0;
+}
+
+.last-field-group {
+    margin-bottom: 22px;
+}
+
+.info-image {
+    display: flex;
+    align-items: center;
+}
+
+.info-image>label {
+    cursor: pointer;
+    margin-bottom: 0;
+    border: 1px solid var(--clr-border);
+    width: max-content;
+    padding: 5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-right: 10px;
+}
+
+.info-image>p {
+    font-size: var(--fs-small-11);
+    color: var(--clr-new);
+}
+
+.last-field-group>input {
+    display: none;
+    /* opacity: 0; */
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+button {
+    width: max-content;
+    padding: 3px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+button[type="button"] {
+    margin-right: 10px;
+    border: 2px solid var(--clr-border);
+    background-color: var(--clr-secondary);
+}
+
+button[type="submit"] {
+    border: 2px solid var(--clr-button-border);
+    background-color: var(--clr-button);
+    color: var(--clr-btn-font);
+}
+
+/** || Media Queries */
+@media (min-width:576px) {
+    form {
+        width: 510px;
+    }
+}
+
+@media (min-width:1000px) {
+
+    /** || update-profile Section */
+    h2 {
+        font-size: var(--fs-medium-20);
+    }
+
+    .stand-out>img {
+        width: 55px;
+    }
+}
