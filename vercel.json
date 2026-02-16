@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "public/build",
+  "outputDirectory": "public",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.6.2"
@@ -10,8 +10,7 @@
   },
   "routes": [
     {
-      "src": "/(.*\\.(?:css|js|mjs|map|json|jpg|jpeg|png|gif|svg|ico|webp|avif|woff|woff2|ttf|eot))",
-      "dest": "/public/$1"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
