@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ModelAuth;
 use App\Models\Student;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class Login extends Controller
 {
@@ -60,6 +63,107 @@ class Login extends Controller
         } else {
             return back()->with('error', 'Your Username Or Password incorrect.');
         }
+    }
+
+    public function forgotPasswordForm()
+    {
+        return view('login.forgot-password', [
+            'title' => 'Forgot Password',
+        ]);
+    }
+
+    public function sendResetLink(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $email = $request->email;
+        $admin = DB::table('admin')->where('email', $email)->first();
+
+        // Avoid account enumeration by always returning the same response.
+        if (!$admin) {
+            return back()->with('status', 'Jika email terdaftar, link reset password telah dikirim.');
+        }
+
+        $token = Str::random(64);
+        DB::table('admin_password_resets')->updateOrInsert(
+            ['email' => $email],
+            [
+                'token' => hash('sha256', $token),
+                'created_at' => now(),
+            ]
+        );
+
+        $resetLink = route('password.admin.reset.form', ['token' => $token, 'email' => $email]);
+
+        try {
+            Mail::raw(
+                "Klik link berikut untuk reset password admin:\n{$resetLink}\n\nLink berlaku 60 menit.",
+                function ($message) use ($email) {
+                    $message->to($email)->subject('Reset Password Admin');
+                }
+            );
+        } catch (\Throwable $e) {
+            // Ignore mail transport failures and keep generic response.
+        }
+
+        return back()
+            ->with('status', 'Jika email terdaftar, link reset password telah dikirim.')
+            ->with('reset_link_preview', app()->environment(['local', 'development']) ? $resetLink : null);
+    }
+
+    public function resetPasswordForm(Request $request, string $token)
+    {
+        $email = (string) $request->query('email', '');
+
+        if ($email === '') {
+            return redirect()->route('password.admin.request')->with('error', 'Link reset tidak valid.');
+        }
+
+        return view('login.reset-password', [
+            'title' => 'Reset Password',
+            'token' => $token,
+            'email' => $email,
+        ]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'token' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $resetRow = DB::table('admin_password_resets')
+            ->where('email', $request->email)
+            ->first();
+
+        if (!$resetRow) {
+            return back()->with('error', 'Token reset tidak valid.');
+        }
+
+        if (Carbon::parse($resetRow->created_at)->addMinutes(60)->isPast()) {
+            DB::table('admin_password_resets')->where('email', $request->email)->delete();
+            return back()->with('error', 'Token reset sudah kedaluwarsa. Silakan minta link baru.');
+        }
+
+        if (!hash_equals((string) $resetRow->token, hash('sha256', $request->token))) {
+            return back()->with('error', 'Token reset tidak valid.');
+        }
+
+        $updated = DB::table('admin')
+            ->where('email', $request->email)
+            ->update(['password' => Hash::make($request->password)]);
+
+        if (!$updated) {
+            return back()->with('error', 'Akun admin tidak ditemukan.');
+        }
+
+        DB::table('admin_password_resets')->where('email', $request->email)->delete();
+
+        return redirect()->route('login')->with('success', 'Password berhasil direset. Silakan login.');
     }
 
     public function logout()

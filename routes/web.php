@@ -32,6 +32,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'revalidate'], function () {
     Route::get('/login', [Login::class, 'index'])->name('login');
+    Route::get('/forgot-password', [Login::class, 'forgotPasswordForm'])->name('password.admin.request');
+    Route::post('/forgot-password', [Login::class, 'sendResetLink'])->middleware('throttle:5,1')->name('password.admin.email');
+    Route::get('/reset-password/{token}', [Login::class, 'resetPasswordForm'])->name('password.admin.reset.form');
+    Route::post('/reset-password', [Login::class, 'resetPassword'])->name('password.admin.reset');
     Route::post('/prosesLogin', [Login::class, 'prosesLogin'])->middleware('throttle:10,1');
     Route::post('/prosesRegister', [Login::class, 'prosesRegister']);
     Route::post('/prosesLoginStudent', [Login::class, 'prosesLoginStudent'])->middleware('throttle:10,1');

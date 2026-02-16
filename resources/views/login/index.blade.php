@@ -60,7 +60,7 @@
           <input type="checkbox" name="remember" disabled>
           <span>Remember me</span>
         </label>
-        <a class="forgot" href="#" onclick="return false;">Forgot Password</a>
+        <a class="forgot" href="{{ route('password.admin.request') }}">Forgot Password</a>
       </div>
 
       <button class="btn-main" type="submit">Sign In</button>
