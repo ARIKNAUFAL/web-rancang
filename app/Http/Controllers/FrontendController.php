@@ -17,12 +17,24 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get(['id', 'name']);
         $category = $categories->first();
+        $defaultCategoryId = $category?->id;
+
         $data = [
-            'recommendation' => Lesson::inRandomOrder()->get(),
+            // Avoid ORDER BY RANDOM() full-scan on production DB.
+            'recommendation' => Lesson::query()
+                ->orderByDesc('id')
+                ->limit(12)
+                ->get(['id', 'name', 'thumbnail']),
             'categories' => $categories,
-            'lessons' => Lesson::where('category_id', $category->id)->get(),
+            'lessons' => $defaultCategoryId
+                ? Lesson::query()
+                    ->where('category_id', $defaultCategoryId)
+                    ->orderByDesc('id')
+                    ->limit(24)
+                    ->get(['id', 'category_id', 'name', 'thumbnail'])
+                : collect(),
             'category' => $category
         ];
 
@@ -36,12 +48,19 @@ class FrontendController extends Controller
 
     public function category(Category $category)
     {
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get(['id', 'name']);
         $data = [
             'category' => $category,
-            'recommendation' => Lesson::inRandomOrder()->get(),
+            'recommendation' => Lesson::query()
+                ->orderByDesc('id')
+                ->limit(12)
+                ->get(['id', 'name', 'thumbnail']),
             'categories' => $categories,
-            'lessons' => Lesson::where('category_id', $category->id)->get()
+            'lessons' => Lesson::query()
+                ->where('category_id', $category->id)
+                ->orderByDesc('id')
+                ->limit(24)
+                ->get(['id', 'category_id', 'name', 'thumbnail'])
         ];
 
         if (Session::get('student_log')) {
@@ -55,7 +74,11 @@ class FrontendController extends Controller
     public function lesson(Lesson $lesson)
     {
         $data = [
-            'lessons' => Lesson::all()->except($lesson->id),
+            'lessons' => Lesson::query()
+                ->where('id', '!=', $lesson->id)
+                ->orderByDesc('id')
+                ->limit(16)
+                ->get(['id', 'name', 'thumbnail']),
             'feedback' => Feedback::where('lesson_id', $lesson->id)->get(),
             'lesson' => $lesson,
             'enrolled' => MyLearning::where('student_id', Session::get('student_id'))->where('lesson_id', $lesson->id)->count() > 0
