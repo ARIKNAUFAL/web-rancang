@@ -10,7 +10,8 @@
   },
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/(.*\\.(?:css|js|mjs|map|json|jpg|jpeg|png|gif|svg|ico|webp|avif|woff|woff2|ttf|eot|otf|txt|xml|webmanifest))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
