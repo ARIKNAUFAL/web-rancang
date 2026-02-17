@@ -169,7 +169,7 @@
                 @foreach ($recommendation as $item)
                     <a href="{{ route('lesson.show', $item->id) }}" class="swiper-slide">
                         <div class="card">
-                            <img src="{{ asset($item->thumbnail) }}" alt="Thumbnail">
+                            <img src="{{ asset($item->thumbnail) }}" alt="Thumbnail" loading="lazy" decoding="async">
                             <div class="content">
                                 <h3>{{ $item->name }}</h3>
                                 <div class="view">
@@ -215,7 +215,7 @@
             @forelse ($lessons as $lesson)
                 <a href="{{ route('lesson.show', $lesson->id) }}">
                     <div class="card">
-                        <img src="{{ asset($lesson->thumbnail) }}" alt="thumbnail">
+                        <img src="{{ asset($lesson->thumbnail) }}" alt="thumbnail" loading="lazy" decoding="async">
                         <div class="content">
                             <h3>{{ $lesson->name }}</h3>
                             <div class="view">
